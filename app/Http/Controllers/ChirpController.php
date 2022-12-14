@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Inertia\Inertia;
 use App\Models\Chirp;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+// use Illuminate\Support\Facades\URL;
 
 class ChirpController extends Controller
 {
@@ -15,7 +17,8 @@ class ChirpController extends Controller
      */
     public function index()
     {
-        //
+        $currentURL = explode('-', Route::current()->uri);
+        dd($currentURL);
         return Inertia::render('Chirps/Index', [
 
             'chirps' => Chirp::with('user:id,name')->latest()->get(),

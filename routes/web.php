@@ -40,5 +40,7 @@ Route::resource('chirps', 'App\Http\Controllers\ChirpController')
     ->only(['index', 'store', 'update', 'destroy'])
     ->middleware(['auth', 'verified']);
 
+Route::get('/chirps-react', ['App\Http\Controllers\ChirpController', 'index']);
+
 
 require __DIR__.'/auth.php';
